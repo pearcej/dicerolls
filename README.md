@@ -8,18 +8,18 @@
 
 - *FIXME*
 
-
 ### Starter files have been provided for you in C++
 
 
 1. **HIGH LEVEL DESIGN**
-*Complete the high-level design components in the linked Google Doc*
-
+*Complete the high-level design components in the linked Google Doc.*
 
 2. **CRC Cards**
-*Complete the CRC Card in the linked Google Doc*
+*Complete the CRC Card in the linked Google Doc. Paste link to completed Google Doc here.*
 
-3. **CLASSES** 
+*FIXME*
+
+3. **CLASSES**
 *How much difficulty did you have figuring out how to create classes and get them to interact? Did the diceroll example help?*
 
 *FIXME*
