@@ -5,7 +5,6 @@
 
 #include <iostream> //for input & output
 #include <random> //needed for Getrandom
-#include <chrono> //needed for Getrandom's seed
 
 using namespace std;
 
@@ -13,21 +12,21 @@ using namespace std;
 // Program illustrating use of C++ classes called Dice and Getrandom
 //---------------------------------------------------------------------
 
-class Getrandom {
-	/** Uses <random> and <chrono> from C++11 to return a random integer in range [1..size] */
+class GetRandom {
+	/** Uses <random> from C++11 to return a random integer in range [1..size] */
 public:
-	Getrandom(int size) {
-		auto seed = chrono::system_clock::now().time_since_epoch().count(); //gets a new seed for the randomness
-		default_random_engine generator(seed);			//seeds our randomness
-		uniform_int_distribution<int> intdist(1, size); //a distibution to make each in-range integer equally likely
-		self_rand_int_ = intdist(generator);			//generates the randme number
+	GetRandom(int size) {
+		random_device rd; // declares a random_device object that need to generate a random number.
+		mt19937 gen(rd()); //mt19937 is an efficient pseudo-random number generator using the Mersenne twister algorithm.
+		uniform_int_distribution<int> intdist(1, size); //create a uniform distribution object to turn the pseudorandom result into a random digit between 1 and size.
+		self_rand_int_ = intdist(gen); //generates the random number.
 	}
 	int roll() {
 		return self_rand_int_;
 	}
 private:
 	int self_rand_int_;
-};
+}; // end of GetRandom
 
 class Dice{
 /** class that can be used to make dice.
@@ -44,7 +43,7 @@ public:
 	int roll() {             // return the random roll of the die
 		// postcondition: number of rolls updated, random 'die' roll returned
 
-		Getrandom newrandom(self_sides_);
+		GetRandom newrandom(self_sides_);
 		self_roll_count_ = self_roll_count_ + 1;         // update # of times die rolled
 		return(newrandom.roll());
 	}
